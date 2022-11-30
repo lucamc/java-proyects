@@ -19,19 +19,19 @@ public class Paciente {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
-        this.fechaAlta = null;
-
-        //Validar si fecha internación es posterior a la fecha actual
-        LocalDate date = LocalDate.now();
-        if (fechaInternacion.isAfter(date)) {
-            throw new PacienteException("Fecha de Internación es posterior a la fecha Actual - " + getClass().getName());
-        } else {
-            this.fechaInternacion = fechaInternacion;
-        }
-
+        this.fechaInternacion = validarFechaInternacion(fechaInternacion); //Validar Fecha
     }
 
-    //Method
+    
+    //Method Validar fecha de Internación
+    public LocalDate validarFechaInternacion (LocalDate fechaInternacion) throws PacienteException {
+        if (fechaInternacion.isAfter(LocalDate.now())) {
+            throw new PacienteException("Fecha de Internación es posterior a la fecha Actual - " + getClass().getName());
+        }
+        return fechaInternacion;
+    }
+
+
     public void darAlta(LocalDate fechaAlta) throws PacienteException {
 
         //Validar si fecha de Alta es Anterior a Fecha de Internación
