@@ -47,6 +47,12 @@ public class Empresa {
         estacionesDisponibles.add("CHIVILCOY");
         estacionesDisponibles.add("ALBERTI");
         estacionesDisponibles.add("BRAGADO");
+        Integer cantidad = 0;
+        return cantidad = contarVecesRecorrida(estacion);
+    }
+
+
+    public Integer contarVecesRecorrida(String estacion) {
 
         Integer cantidadPersonas = 0;
         if (!estacionesDisponibles.contains(estacion.toUpperCase())) {
